@@ -1,21 +1,26 @@
 import time
 
 def f(n):
-    if n==1 or n==2:
+    if n==0 or n==1:
         return 1
-    return f(n-1)+f(n-2)
+    else:
+        return n*f(n-1)
+
+
+
 def fnr(n):
-    if n==1 or n==2:
+    res = 1
+    if n==0 or n==1:
         return 1
-    elif n>=3:
-        sum=0
-        Aone=1
-        Atwo=1
-        for i in range(n-2):
-            sum=Aone+Atwo
-            Atwo=Aone
-            Aone=sum
-        return sum
+    else:
+        for i in range(2,n+1):
+            ko = i
+            res = res*(ko)
+        return res
+
+
+
+
 
 
 
@@ -23,11 +28,14 @@ def fnr(n):
 
 
 start=time.time()
-f(7)
+f(20)
 end=time.time()
-print("재귀적 피보나치 함수의 소요시간입니다.",end-start)
+print("재귀적 팩토리얼 알고리즘의 소요시간입니다.",end-start)
 
 interstart=time.time()
-fnr(7)
+fnr(20)
 interend=time.time()
-print("반복문 피보나치 함수의 소요시간입니다.",interend-interstart)
+print("반복문 팩토리얼 알고리즘의 소요시간입니다.",interend-interstart)
+
+print(f(20))
+print(fnr(20))
